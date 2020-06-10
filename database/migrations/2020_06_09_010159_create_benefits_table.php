@@ -17,7 +17,7 @@ class CreateBenefitsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('slug');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('icon')->nullable();
             $table->unsignedBigInteger('section_id')->nullable();
             $table->timestamps();

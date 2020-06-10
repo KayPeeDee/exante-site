@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image');
-            $table->string('details')->nullable();
+            $table->longText('details')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
 

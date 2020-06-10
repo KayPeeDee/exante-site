@@ -17,7 +17,7 @@ class CreateTestimonialsTable extends Migration
             $table->bigIncrements('id');
             $table->string('full_name');
             $table->string('position');
-            $table->string('testimony');
+            $table->longText('testimony');
             $table->string('image')->nullable();
             $table->unsignedBigInteger('section_id')->nullable();
             $table->timestamps();
