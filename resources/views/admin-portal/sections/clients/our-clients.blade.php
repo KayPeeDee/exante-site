@@ -35,7 +35,6 @@
                                                     <i class="fa fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">View</a>
                                                     <a class="dropdown-item" href="{{route('get-client', [$client->section_id, $client->id])}}">Update</a>
                                                 </div>
                                             </div>
@@ -43,7 +42,7 @@
                                         <td>{{$client->name}}</td>
                                         <td>{{$client->website_link}}</td>
                                         <td>
-                                            <img src="/images/{{$client->logo}}" class="mr-3" height="64px" width="64px">
+                                            <img src="{{ asset('images/'.$client->logo) }}" class="mr-3" height="64px" width="64px">
                                         </td>
                                     </tr>
                                 @endforeach

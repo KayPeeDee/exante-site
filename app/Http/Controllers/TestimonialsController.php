@@ -47,9 +47,21 @@ class TestimonialsController extends Controller
         return view('admin-portal.sections.testimonials.update-testimonial', compact('testimonial'));
     }
 
-    public function updateTestimonial(Request $request, $id)
+    public function updateTestimonial(Request $request, $sectionId, $id)
     {
+        $this->testimonialRepository->updateTestimonial($request->all(), $id);
+        return back();
+    }
 
+    public function updateUserProfilePic(Request $request, $sectionId, $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $fileName = $this->mediaRepository->uploadImage($request->file('image'));
+            $input['image'] = $fileName;
+        }
+        $this->testimonialRepository->updateUserProfilePic($input['image'], $id);
+        return back();
     }
 
     public function deleteTestimonial($sectionId, $id)

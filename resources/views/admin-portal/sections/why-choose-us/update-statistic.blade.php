@@ -37,6 +37,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('update-statistic', [$statistic->section_id, $statistic->id]) }}">
                         @csrf
+                        @method('PUT')
                         <input  type="hidden" name="section_id" value="{{$statistic->section_id}}">
 
                         <div class="form-group">

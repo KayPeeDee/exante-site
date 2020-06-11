@@ -54,12 +54,17 @@ class TeamRepository{
         return Team::find($id)->update([
             'full_name' => $member['full_name'],
             'position' => $member['position'],
-            'image' => $member['image'],
             'facebook_link' => $member['facebook_link'],
             'twitter_handler' => $member['twitter_handler'],
             'linked_in' => $member['linked_in'],
             'google_plus' => $member['google_plus'],
-            'section_id' => $member['section_id']
+        ]);
+    }
+
+    public function updateProfileImage($fileName, $id)
+    {
+        return Team::find($id)->update([
+            'image' => $fileName
         ]);
     }
 

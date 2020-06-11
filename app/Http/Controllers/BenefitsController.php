@@ -44,9 +44,10 @@ class BenefitsController extends Controller
         return view('admin-portal.sections.why-choose-us.update-benefit', compact('benefit'));
     }
 
-    public function updateBenefit(Request $request, $id)
+    public function updateBenefit(Request $request, $sectionId, $id)
     {
-
+        $this->benefitRepository->updateBenefit($request->all(), $id);
+        return back();
     }
 
     public function deleteBenefit($sectionId, $id)
@@ -72,9 +73,10 @@ class BenefitsController extends Controller
         return view('admin-portal.sections.why-choose-us.update-statistic', compact('statistic'));
     }
 
-    public function updateStatistic(Request $request, $id)
+    public function updateStatistic(Request $request, $sectionId, $id)
     {
-
+        $this->statisticRepository->updateStatistic($request->all(), $id);
+        return back();
     }
 
     public function deleteStatistic($sectionId, $id)

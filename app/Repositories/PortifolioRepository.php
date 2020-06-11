@@ -85,9 +85,14 @@ class PortifolioRepository{
     {
         return Project::find($id)->update([
             'name' => $project['name'],
-            'image' => $project['image'],
             'details' => $project['details'],
-            'category_id' => $project['category_id']
+        ]);
+    }
+
+    public function updateProjectImage($filaName, $id)
+    {
+        return Project::find($id)->update([
+            'image' => $filaName,
         ]);
     }
 

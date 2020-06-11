@@ -54,10 +54,21 @@ class ClientController extends Controller
         return view('admin-portal.sections.clients.update-client', compact('client'));
     }
 
-    public function updateClient(Request $request, $id)
+    public function updateClient(Request $request, $sectionId, $id)
     {
+        $this->clientRepository->updateClient($request->all(), $id);
+        return back();
+    }
 
-
+    public function updateLogo(Request $request, $sectionId, $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('logo')) {
+            $fileName = $this->mediaRepository->uploadFile($request->file('logo'));
+            $input['logo'] = $fileName;
+        }
+        $this->clientRepository->updateLogo($input['logo'], $id);
+        return back();
     }
 
     public function deleteClient($sectionId, $id)

@@ -63,6 +63,28 @@ class HomeController extends Controller
         return back();
     }
 
+    public function updateBackgroungImage(Request $request, $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('background_image')) {
+            $fileName = $this->mediaRepository->uploadFile($request->file('background_image'));
+            $input['background_image'] = $fileName;
+        }
+        $this->homeRepository->updateBackgroundImage($input['background_image'], $id);
+        return back();
+    }
+
+    public function updateForegroundImage(Request $request, $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('main_image')) {
+            $fileName = $this->mediaRepository->uploadFile($request->file('main_image'));
+            $input['main_image'] = $fileName;
+        }
+        $this->homeRepository->updateForegroundImage($input['main_image'], $id);
+        return back();
+    }
+
     public function deleteHomeDetails($id)
     {
         $this->homeRepository->deleteHomeDetails($id);

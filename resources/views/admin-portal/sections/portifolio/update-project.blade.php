@@ -37,6 +37,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('update-project', [$project->category_id, $project->id]) }}" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <input  type="hidden" name="category_id" value="{{$project->category_id}}">
 
                         <div class="form-group">
@@ -44,14 +45,10 @@
                             <input type="text" class="form-control" id="name" name="name" value="{{$project->name}}">
                         </div>
 
-                        <div class="form-group">
-                            <label for="image" class="col-form-label">Upload Image:</label>
-                            <input type="file" class="form-control" id="image" name="image" value="{{$project->image}}">
-                        </div>
 
                         <div class="form-group">
                             <label for="details" class="col-form-label">Details:</label>
-                            <textarea class="form-control" rows="4" id="details" name="details"></textarea>
+                            <textarea class="form-control" rows="4" id="details" name="details">{{$project->details}}</textarea>
                         </div>
 
 
@@ -60,9 +57,52 @@
                         </button>
 
                     </form>
+
+                    <hr class="sidebar-divider">
+
+                    <div class="mt-4">
+                        <h6 class="mb-3">Project Image</h6>
+                        <div class="mb-4">
+                            <img src="{{ asset('images/'.$project->image) }}" class="mr-3" height="160px" >
+                        </div>
+                        <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#projectImageModal">
+                            Upload Foreground Image
+                        </button>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="projectImageModal" tabindex="-1" role="dialog" aria-labelledby="projectImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectImageModalLabel">Upload Background Image</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="{{ route('update-project-image', [$project->category_id, $project->id]) }}"  enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="image" class="col-form-label">Upload Project Image:</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
 @endsection

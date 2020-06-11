@@ -52,9 +52,21 @@ class TeamController extends Controller
         return view('admin-portal.sections.teams.update-team', compact('member'));
     }
 
-    public function updateTeamMember(Request $request, $id)
+    public function updateTeamMember(Request $request, $sectionId,  $id)
     {
+        $this->teamRepository->updateTeamMember($request->all(), $id);
+        return back();
+    }
 
+    public function updateProfileImage(Request $request, $sectionId,  $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $fileName = $this->mediaRepository->uploadImage($request->file('image'));
+            $input['image'] = $fileName;
+        }
+        $this->teamRepository->updateProfileImage($input['image'], $id);
+        return back();
     }
 
     public function deleteTeamMember($sectionId, $id){

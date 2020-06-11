@@ -44,7 +44,9 @@
                                         <td>{{$testimonial->full_name}}</td>
                                         <td>{{$testimonial->position}}</td>
                                         <td>{{$testimonial->testimony}}</td>
-                                        <td>{{$testimonial->image}}</td>
+                                        <td>
+                                            <img src="{{ asset('images/'.$testimonial->image) }}" class="mr-3" height="64px" width="64px">
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

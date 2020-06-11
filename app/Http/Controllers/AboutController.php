@@ -47,9 +47,21 @@ class AboutController extends Controller
         return view('admin-portal.sections.about-us.update-about-details', compact('aboutUs'));
     }
 
-    public function updateAboutUsDetails(Request $request, $id)
+    public function updateAboutUsDetails(Request $request, $sectionId, $id)
     {
+        $this->aboutRepository->updateAboutUsDetails($request->all(), $id);
+        return back();
+    }
 
+    public function updateAboutUsImage(Request $request, $sectionId, $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $fileName = $this->mediaRepository->uploadFile($request->file('image'));
+            $input['image'] = $fileName;
+        }
+        $this->aboutRepository->uploadImageUpdate($input['image'], $id);
+        return back();
     }
 
     public function deleteAboutUsDetails($sectionId, $id)

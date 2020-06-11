@@ -30,10 +30,21 @@ class HomeRepository{
     public function updateHomeDetails(array $data, $id)
     {
         return Home::find($id)->update([
-            'section_id' => $data['section_id'],
-            'title' => $data['title'],
-            'background_image' => $data['background_image'],
-            'main_image' => $data['main_image']
+            'title' => $data['title']
+        ]);
+    }
+
+    public function updateBackgroundImage($fileName, $id)
+    {
+        return Home::find($id)->update([
+            'background_image' => $fileName
+        ]);
+    }
+
+    public function updateForegroundImage($fileName, $id)
+    {
+        return Home::find($id)->update([
+            'main_image' => $fileName
         ]);
     }
 

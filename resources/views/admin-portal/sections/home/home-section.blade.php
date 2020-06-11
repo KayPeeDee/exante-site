@@ -76,24 +76,96 @@
                                 <input type="text" class="form-control" id="title" name="title" value="{{$home->title}}">
                             </div>
 
-                            <div class="form-group">
-                                <label for="background_image" class="col-form-label">Upload Background Image:</label>
-                                <input type="file" class="form-control" id="background_image" name="background_image"  value="{{$home->background_image}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="main_image" class="col-form-label">Upload Foreground Image:</label>
-                                <input type="file" class="form-control" id="main_image" name="main_image"  value="{{$home->main_image}}">
-                            </div>
-
                             <button type="submit" class="btn btn-success">
                                 Update
                             </button>
+
                         </form>
+
+                        <hr class="sidebar-divider">
+
+                        <div class="mt-4">
+                            <h6>Background Image</h6>
+                            <div class="mb-4">
+                                <img src="{{ asset('images/'.$home->background_image) }}" class="mr-3" height="160px" >
+                            </div>
+                            <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#bgImageModal">
+                                Upload Background Image
+                            </button>
+
+                        </div>
+
+                        <hr class="sidebar-divider">
+
+                        <div class="mt-4">
+                            <h6 class="mb-3">Foreground Image</h6>
+                            <div class="mb-4">
+                                <img src="{{ asset('images/'.$home->main_image) }}" class="mr-3" height="160px" >
+                            </div>
+                            <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#fgImageModal">
+                                Upload Foreground Image
+                            </button>
+
+                        </div>
+
                     </div>
                 </div>
             @endif
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="bgImageModal" tabindex="-1" role="dialog" aria-labelledby="bgImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bgImageModalLabel">Upload Background Image</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="{{ route('update-home-bg-image', [$home->id]) }}"  enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="background_image" class="col-form-label">Upload Background Image:</label>
+                    <input type="file" class="form-control" id="background_image" name="background_image">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="fgImageModal" tabindex="-1" role="dialog" aria-labelledby="fgImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="fgImageModalLabel">Upload Foreground Image</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="{{ route('update-home-fg-image', [$home->id]) }}"  enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="main_image" class="col-form-label">Upload Foreground Image:</label>
+                    <input type="file" class="form-control" id="main_image" name="main_image">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
     </div>
 </div>
 @endsection

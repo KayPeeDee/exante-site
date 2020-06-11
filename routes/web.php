@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/landing', function () {
-    return view('landing-page');
-});
 
 Route::get('/', 'SiteController@index')->name('welcome');
 Route::post('/contact-message/send','SiteController@createContactMessage')->name('send-message');
@@ -47,6 +44,7 @@ Route::prefix('admin')->group(function(){
     Route::post('sections/{sectionId}/our-clients/create','ClientController@createClient')->name('create-client');
     Route::get('sections/{sectionId}/our-clients/{id}','ClientController@getClientById')->name('get-client');
     Route::put('sections/{sectionId}/our-clients/{id}','ClientController@updateClient')->name('update-client');
+    Route::put('sections/{sectionId}/our-clients/{id}/update-logo','ClientController@updateLogo')->name('update-client-logo');
     Route::delete('sections/{sectionId}/our-clients/{id}','ClientController@deleteClient')->name('delete-client');
 
 
@@ -55,6 +53,8 @@ Route::prefix('admin')->group(function(){
     Route::post('sections/{sectionId}/our-team/create','TeamController@createTeamMember')->name('create-team-member');
     Route::get('sections/{sectionId}/our-team/{id}','TeamController@getTeamMemberById')->name('get-team-member');
     Route::put('sections/{sectionId}/our-team/{id}','TeamController@updateTeamMember')->name('update-team-member');
+    Route::put('sections/{sectionId}/our-team/{id}','TeamController@updateTeamMember')->name('update-team-member');
+    Route::put('sections/{sectionId}/our-team/{id}/profile-image','TeamController@updateProfileImage')->name('update-team-member-image');
     Route::delete('sections/{sectionId}/our-team/{id}','TeamController@deleteTeamMember')->name('delete-team-member');
 
     Route::get('sections/{sectionId}/testimonials','TestimonialsController@getTestimonialsBySectionId')->name('testimonials');
@@ -62,6 +62,7 @@ Route::prefix('admin')->group(function(){
     Route::post('sections/{sectionId}/testimonials/create','TestimonialsController@createTestimonial')->name('create-testimonial');
     Route::get('sections/{sectionId}/testimonials/{id}','TestimonialsController@getTestimonialById')->name('get-testimonial');
     Route::put('sections/{sectionId}/testimonials/{id}','TestimonialsController@updateTestimonial')->name('update-testimonial');
+    Route::put('sections/{sectionId}/testimonials/{id}/upload-image','TestimonialsController@updateUserProfilePic')->name('update-testimonial-image');
     Route::delete('sections/{sectionId}/testimonials/{id}','TestimonialsController@deleteTestimonial')->name('delete-testimonial');
 
 
@@ -76,6 +77,7 @@ Route::prefix('admin')->group(function(){
     Route::post('project-category/{id}/projects/create','PortifolioController@createProject')->name('create-project');
     Route::get('project-category/{id}/projects/{projectId}','PortifolioController@getProjectById')->name('get-project');
     Route::put('project-category/{id}/projects/{projectId}','PortifolioController@updateProject')->name('update-project');
+    Route::put('project-category/{id}/projects/{projectId}/upload-image','PortifolioController@updateProjectImage')->name('update-project-image');
     Route::delete('project-category/{id}/projects/{projectId}','PortifolioController@deleteProject')->name('delete-project');
 
     Route::get('sections/{sectionId}/our-services','ServiceController@getServicesBySectionId')->name('services');
@@ -103,12 +105,16 @@ Route::prefix('admin')->group(function(){
     Route::post('sections/{sectionId}/about-us/create','AboutController@createAboutusDetails')->name('create-about-us');
     Route::get('sections/{sectionId}/about-us/{id}','AboutController@getAboutUsDetailsById')->name('get-about-us');
     Route::put('sections/{sectionId}/about-us/{id}','AboutController@updateAboutUsDetails')->name('update-about-us');
+    Route::put('sections/{sectionId}/about-us/{id}/image','AboutController@updateAboutUsImage')->name('update-about-us-image');
     Route::delete('sections/{sectionId}/about-us/{id}','AboutController@deleteAboutUsDetails')->name('delete-about-us');
 
     Route::get('sections/{sectionId}/home', 'HomeController@getHomeDetails')->name('home-details');
     Route::post('home/create','HomeController@createHomeDetails')->name('create-home-details');
     Route::put('home/{id}','HomeController@updateHomeDetails')->name('update-home-details');
+    Route::put('home/{id}/upload-bg-image','HomeController@updateBackgroungImage')->name('update-home-bg-image');
+    Route::put('home/{id}/upload-fg-image','HomeController@updateForegroundImage')->name('update-home-fg-image');
     Route::delete('home/{id}', 'HomeController@deleteHomeDetails')->name('delete-home-details');
 
+    // Route::patch()->name('');
 
 });

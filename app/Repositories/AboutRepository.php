@@ -43,10 +43,14 @@ class AboutRepository{
         return About::find($id)->update([
             'title' => $data['title'],
             'description' => $data['description'],
-            'image' => $data['image'],
-            'section_id' => $data['section_id']
         ]);
+    }
 
+    public function uploadImageUpdate($fileName, $id)
+    {
+        return About::find($id)->update([
+            'image' => $fileName
+        ]);
     }
 
     public function deleteAboutUsDetails($id)

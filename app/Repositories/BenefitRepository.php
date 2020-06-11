@@ -46,7 +46,6 @@ class BenefitRepository{
             'slug' => $data['slug'],
             'description' => $data['description'],
             'icon' => $data['icon'],
-            'section_id' => $data['section_id']
         ]);
 
     }

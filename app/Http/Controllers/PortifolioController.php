@@ -80,9 +80,21 @@ class PortifolioController extends Controller
         return view('admin-portal.sections.portifolio.update-project', compact('project'));
     }
 
-    public function updateProject(Request $request, $id)
+    public function updateProject(Request $request, $categoryId, $id)
     {
+        $this->portifolioRepository->updateProject($request->all(), $id);
+        return back();
+    }
 
+    public function updateProjectImage(Request $request, $categoryId,  $id)
+    {
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $fileName = $this->mediaRepository->uploadFile($request->file('image'));
+            $input['image'] = $fileName;
+        }
+        $this->portifolioRepository->updateProjectImage($input['image'], $id);
+        return back();
     }
 
     public function deleteProject($categoryId, $id)

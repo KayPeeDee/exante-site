@@ -36,11 +36,10 @@
                         </div>
 
 
-                        <div class="form-group row mb-0">
-                            <button type="submit" class="btn btn-success">
-                                Save
-                            </button>
-                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+
                     </form>
                 </div>
             </div>

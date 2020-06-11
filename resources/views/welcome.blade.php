@@ -95,7 +95,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="card mt-3">
-                                    <img src="/images/{{$home->home->main_image}}" class="card-img" alt="...">
+                                    <img src="{{ asset('images/'.$home->home->main_image) }}" class="card-img" alt="...">
                                 </div>
 
                             </div>
@@ -137,7 +137,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="card card-home mb-4">
-                                                    <img src="/images/{{$about->image}}" class="card-img" alt="...">
+                                                    <img src="{{ asset('images/'.$about->image) }}" class="card-img">
                                                 </div>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="card card-home mb-4">
-                                                    <img src="/images/{{$about->image}}" class="card-img" alt="...">
+                                                    <img src="{{ asset('images/'.$about->image) }}" class="card-img">
                                                 </div>
                                             </div>
 
@@ -308,7 +308,7 @@
                                     <div class="card-columns">
                                         @forelse ($projects as $project)
                                             <div class="card">
-                                                <img src="/images/{{$project->image}}" class="card-img">
+                                                <img src="{{ asset('images/'.$project->image) }}" class="card-img">
                                             </div>
                                         @empty
                                             <div class="col-lg-12">
@@ -328,7 +328,7 @@
                                         <div class="card-columns">
                                             @foreach ($appProjects as $project)
                                                 <div class="card">
-                                                    <img src="/images/{{$project->image}}" class="card-img">
+                                                    <img src="{{ asset('images/'.$project->image) }}" class="card-img">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -349,7 +349,7 @@
                                         <div class="card-columns">
                                             @foreach ($enterpriseProjects as $project)
                                                 <div class="card">
-                                                    <img src="/images/{{$project->image}}" class="card-img">
+                                                    <img src="{{ asset('images/'.$project->image) }}" class="card-img">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -369,7 +369,7 @@
                                         <div class="card-columns">
                                             @foreach ($webProjects as $project)
                                                 <div class="card">
-                                                    <img src="/images/{{$project->image}}" class="card-img">
+                                                    <img src="{{ asset('images/'.$project->image) }}" class="card-img">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -404,13 +404,13 @@
                                                     <div class="card mb-4 card-home">
                                                         <div class="row no-gutters">
                                                         <div class="col-md-2">
-                                                            <img src="/images/{{$testimonial->image}}" class="img-circle">
+                                                            <img src="{{ asset('images/'.$testimonial->image) }}" class="img-circle">
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="card-body">
                                                                 <h5 class="card-title text-bold">{{$testimonial->full_name}}</h5>
-                                                                <p class="card-text"><small class="text-muted">{{$testimonial->position}}</small></p>
-                                                                <p class="card-text">{{$testimonial->testimony}}</p>
+                                                                <div class="card-text"><small class="text-muted">{{$testimonial->position}}</small></div>
+                                                                <div class="card-text">{{$testimonial->testimony}}</div>
 
                                                             </div>
                                                         </div>
@@ -460,43 +460,20 @@
                                 <div class="col-md-3">
                                     <div class="card text-center card-home">
                                         <div class="card-body">
-                                            <img src="/images/{{$member->image}}" class="rounded-circle member-pic" >
+                                            {{--<img src="/images/{{$member->image}}" class="rounded-circle member-pic" >--}}
+
+                                            <img src="{{ asset('images/'.$member->image) }}" class="rounded-circle member-pic">
                                         </div>
 
                                     </div>
                                 </div>
                             @empty
-                                <p>No users</p>
+                            <div class="col-lg-12">
+                                <div class="alert alert-info text-center" role="alert">
+                                    There are no team records yet!!
+                                </div>
+                            </div>
                             @endforelse
-
-
-
-                            {{--<div class="col-md-3">
-                                <div class="card text-center card-home">
-                                    <div class="card-body">
-                                        <img src="{{ asset('images/king.jpg') }}" class="rounded-circle member-pic" >
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="card text-center card-home">
-                                    <div class="card-body">
-                                        <img src="{{ asset('images/king.jpg') }}" class="rounded-circle member-pic" >
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="card text-center card-home">
-                                    <div class="card-body">
-                                        <img src="{{ asset('images/king.jpg') }}" class="rounded-circle member-pic" >
-                                    </div>
-
-                                </div>
-                            </div>--}}
 
                         </div>
                     </div>
@@ -518,7 +495,7 @@
                             @forelse ($clients->clients as $client)
                                 <div class="col-lg-3 col-md-4 col-xs-6">
                                     <div class="company-logo">
-                                        <img src="/images/{{$client->logo}}" class="img-fluid" alt="">
+                                        <img src="{{ asset('images/'.$client->logo) }}" class="img-fluid">
                                     </div>
                                 </div>
                             @empty
@@ -556,15 +533,15 @@
                                 <div class="card card-home">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 text-medium">
                                                 <i class="fa fa-map-marker"></i>
                                                 {{$contact->contactUs->address}}
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 text-medium">
                                                 <i class="fa fa-envelope"></i>
                                                 {{$contact->contactUs->email}}
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 text-medium">
                                                 <i class="fa fa-phone"></i>
                                                 {{$contact->contactUs->phone}}
                                             </div>

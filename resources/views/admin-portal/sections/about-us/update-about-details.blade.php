@@ -35,39 +35,81 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('update-about-us', [$aboutUs->section_id, $aboutUs->id]) }}"  enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <input  type="hidden" name="section_id" value="{{$aboutUs->section_id}}">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <img src="/images/{{$aboutUs->image}}" class="mr-3" height="160px" width="160px" >
+                            <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                                Upload Image
+                            </button>
 
-                        <div class="form-group">
-                            <label for="title" class="col-form-label">Title:</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{$aboutUs->title}}">
                         </div>
+                        <div class="col-md-9">
+                            <form method="POST" action="{{ route('update-about-us', [$aboutUs->section_id, $aboutUs->id]) }}"  enctype="multipart/form-data">
+                                @method('PUT')
+                                @csrf
+                                <input  type="hidden" name="section_id" value="{{$aboutUs->section_id}}">
+
+                                <div class="form-group">
+                                    <label for="title" class="col-form-label">Title:</label>
+                                    <input type="text" class="form-control" id="title" name="title" value="{{$aboutUs->title}}">
+                                </div>
 
 
-                        <div class="form-group">
-                            <label for="image" class="col-form-label">Upload Image:</label>
-                            <input type="file" class="form-control" id="image" name="image" value="{{$aboutUs->image}}">
+
+
+                                <div class="form-group">
+                                    <label for="description" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" rows="4" id="description" name="description">{{$aboutUs->description}}</textarea>
+                                </div>
+
+                                <a href="{{route('about-us', $aboutUs->section_id)}}" class="btn btn-secondary mr-2">
+                                    Close
+                                </a>
+
+
+                                <button type="submit" class="btn btn-success">
+                                    Update
+                                </button>
+                            </form>
+
                         </div>
-
-                        <div class="form-group">
-                            <label for="description" class="col-form-label">Description:</label>
-                            <textarea class="form-control" rows="4" id="description" name="description"></textarea>
-                        </div>
-
-                        <a href="{{route('about-us', $aboutUs->section_id)}}" class="btn btn-secondary mr-2">
-                            Close
-                        </a>
+                    </div>
 
 
-                        <button type="submit" class="btn btn-success">
-                            Update
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="{{ route('update-about-us-image', [$aboutUs->section_id, $aboutUs->id]) }}"  enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="image" class="col-form-label">Upload Image:</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection

@@ -46,11 +46,10 @@
                                 <input type="text" class="form-control" id="phone" name="phone" >
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <button type="submit" class="btn btn-success" data-dismiss="modal">
-                                    Save
-                                </button>
-                            </div>
+                            <button type="submit" class="btn btn-success" data-dismiss="modal">
+                                Save
+                            </button>
+
                         </form>
                     </div>
                 </div>
@@ -99,11 +98,10 @@
                                 <input type="text" class="form-control" id="phone" name="phone" value="{{$contactUs->phone}}">
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <button type="submit" class="btn btn-success" data-dismiss="modal">
-                                    Save
-                                </button>
-                            </div>
+                            <button type="submit" class="btn btn-success" data-dismiss="modal">
+                                Save
+                            </button>
+
                         </form>
                     </div>
                 </div>

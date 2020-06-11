@@ -41,11 +41,9 @@
                             <textarea class="form-control" rows="4" id="testimony" name="testimony"></textarea>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <button type="submit" class="btn btn-success">
-                                Save
-                            </button>
-                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
                     </form>
                 </div>
             </div>

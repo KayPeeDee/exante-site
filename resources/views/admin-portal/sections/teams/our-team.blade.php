@@ -42,7 +42,9 @@
                                         </th>
                                         <td>{{$member->full_name}}</td>
                                         <td>{{$member->position}}</td>
-                                        <td>{{$member->image}}</td>
+                                        <td>
+                                            <img src="{{ asset('images/'.$member->image) }}" class="mr-3" height="64px" width="64px">
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -42,7 +42,6 @@ class StatisticRepository{
         return Statistic::find($id)->update([
             'title' => $data['title'],
             'statistic' => $data['statistic'],
-            'section_id' => $data['section_id']
         ]);
 
     }

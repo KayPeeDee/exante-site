@@ -41,8 +41,13 @@ class TestimonialRepository{
             'full_name' => $testimony['full_name'],
             'position' => $testimony['position'],
             'testimony' => $testimony['testimony'],
-            'image' =>  $testimony['image'],
-            'section_id' => $testimony['section_id']
+        ]);
+    }
+
+    public function updateUserProfilePic($fileName, $id)
+    {
+        return Testimonial::find($id)->update([
+            'image' =>  $fileName
         ]);
     }
 

@@ -54,7 +54,7 @@
 
                         <div class="form-group">
                             <label for="description" class="col-form-label">Description:</label>
-                            <input type="text" class="form-control" id="description" name="description" value="{{$category->description}}">
+                            <textarea class="form-control" rows="4" id="description" name="description">{{$category->description}}</textarea>
                         </div>
 
                         <button type="submit" class="btn btn-success" data-dismiss="modal">
@@ -79,6 +79,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Details</th>
+                                <th scope="col">Image</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -97,6 +98,9 @@
                                         </th>
                                         <td>{{$project->name}}</td>
                                         <td>{{$project->details}}</td>
+                                        <td>
+                                            <img src="/images/{{$project->image}}" class="mr-3" height="64px" width="64px">
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

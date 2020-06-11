@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label for="description" class="col-form-label">Description:</label>
-                            <input type="text" class="form-control" id="description" name="description" value="{{$benefit->description}}">
+                            <textarea class="form-control" rows="4" id="description" name="description">{{$benefit->description}}</textarea>
                         </div>
 
                         <a href="{{route('benefits', $benefit->section_id)}}" class="btn btn-secondary mr-2">

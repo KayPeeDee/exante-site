@@ -50,8 +50,13 @@ class ClientRepository{
         return Client::find($id)->update([
             'name' => $client['name'],
             'website_link' => $client['website_link'],
-            'logo' => $client['logo'],
-            'section_id' => $client['section_id']
+        ]);
+    }
+
+    public function updateLogo($fileName, $id)
+    {
+        return Client::find($id)->update([
+            'logo' => $fileName
         ]);
     }
 
