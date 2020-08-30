@@ -17,14 +17,14 @@ class ServiceRepository{
         return Service::create([
             'name' => $service['name'],
             'description' => $service['description'],
-            'icon' => $service['icon'],
-            'section_id' => $service['section_id']
+            'image' => $service['image'],
+            'category_id' => $service['category_id']
         ]);
     }
 
-    public function getServicesBySectionId($sectionId)
+    public function getServicesByCategoryId($categoryId)
     {
-        return Section::find($sectionId)->services;
+        return Service::find($categoryId)->services;
     }
 
     public function getAllServices()
@@ -37,15 +37,26 @@ class ServiceRepository{
         return Service::find($id);
     }
 
+    public function getServiceByName($name)
+    {
+        return Service::where('name', $name)->first();
+    }
+
     public function updateService(array $service, $id)
     {
         return Service::find($id)->update([
             'name' => $service['name'],
             'description' => $service['description'],
-            'icon' => $service['icon'],
-            'section_id' => $service['section_id']
         ]);
 
+    }
+
+
+    public function updateServiceImage($fileName, $id)
+    {
+        return Service::find($id)->update([
+            'image' => $fileName
+        ]);
     }
 
     public function deleteService($id)

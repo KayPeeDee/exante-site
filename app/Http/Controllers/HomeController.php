@@ -84,7 +84,7 @@ class HomeController extends Controller
         $this->homeRepository->updateForegroundImage($input['main_image'], $id);
         return back();
     }
-
+ 
     public function deleteHomeDetails($id)
     {
         $this->homeRepository->deleteHomeDetails($id);

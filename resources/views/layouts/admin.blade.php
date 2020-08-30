@@ -43,6 +43,59 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
+            <div class="sidebar-heading">
+                Pages
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseServices" aria-expanded="true" aria-controls="collapseServices">
+                    <i class="fa fa-table"></i>
+                    <span>Services</span>
+                </a>
+                <div id="collapseServices" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('list-service-categories')}}">Service Categories</a>
+                        <a class="collapse-item" href="{{route('list-services')}}">Services</a>
+
+                    </div>
+                  </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('list-products')}}">
+                <i class="fa fa-fw fa-tachometer"></i>
+                <span>Products</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAboutUs" aria-expanded="true" aria-controls="collapseAboutUs">
+                    <i class="fa fa-table"></i>
+                    <span>About Us</span>
+                </a>
+                <div id="collapseAboutUs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('get-company-details')}}">Company Details</a>
+                        <a class="collapse-item" href="{{route('list-team-members')}}">Organisational Team</a>
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContactUs" aria-expanded="true" aria-controls="collapseContactUs">
+                    <i class="fa fa-table"></i>
+                    <span>Contact Us</span>
+                </a>
+                <div id="collapseContactUs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('list-phone-numbers')}}">Phone Numbers</a>
+                        <a class="collapse-item" href="{{route('list-email-addresses')}}">Email Addresses</a>
+                        <a class="collapse-item" href="{{route('list-social-media-links')}}">Social Media</a>
+                    </div>
+                </div>
+            </li>
+
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle">
@@ -97,7 +150,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container">
+                <div class="container-fluid">
                     <main class="py-4">
                         @yield('content')
                     </main>

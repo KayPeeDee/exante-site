@@ -42,8 +42,8 @@ class TeamController extends Controller
 
     public function getTeamMembersBySectionId($sectionId)
     {
-        $teamMembers = $this->teamRepository->getTeamMembersBySectionId($sectionId);
-        return view('admin-portal.sections.teams.our-team', compact('teamMembers','sectionId'));
+        // $teamMembers = $this->teamRepository->getTeamMembersBySectionId($sectionId);
+        // return view('admin-portal.sections.teams.our-team', compact('teamMembers','sectionId'));
     }
 
     public function getTeamMemberById($sectionId, $id)

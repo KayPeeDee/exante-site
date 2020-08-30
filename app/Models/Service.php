@@ -8,8 +8,8 @@ class Service extends Model
 {
     protected $guarded = [];
 
-    public function section()
+    public function serviceCategory()
     {
-        return $this->belongsTo(Section::class);
+        return $this->belongsTo(ServiceCategory::class, 'category_id');
     }
 }

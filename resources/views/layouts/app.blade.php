@@ -7,11 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TekkieTonic') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('sb-template/js/sb-admin-2.min.js') }}" defer></script>
+    <script src="{{asset('vendor/wow/wow.min.js')}}" defer></script>
+    <script src="{{asset('vendor/mobile-nav/mobile-nav.js')}}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,11 +23,14 @@
     <!-- Styles -->
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{asset('sb-template/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendor/animate.css/animate.min.css')}}" rel="stylesheet">
 
-    {{--<link href="{{asset('sb-template/vendor/fontawesome-free/css/fontawesome.min.css')}}" rel="stylesheet">--}}
-    <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    {{--<link href="{{asset('ionicons/css/ionicons.min.css')}}" rel="stylesheet">--}}
+    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('ionicons/css/ionicons.min.css')}}" rel="stylesheet">--}}
 
 
 </head>

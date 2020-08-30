@@ -25,19 +25,11 @@ class TeamRepository{
         return Team::create([
             'full_name' => $member['full_name'],
             'position' => $member['position'],
-            'image' => $member['image'],
-            'facebook_link' => $member['facebook_link'],
-            'twitter_handler' => $member['twitter_handler'],
-            'linked_in' => $member['linked_in'],
-            'google_plus' => $member['google_plus'],
-            'section_id' => $member['section_id']
+            'image' => $member['image']
         ]);
     }
 
-    public function getTeamMembersBySectionId($sectionId)
-    {
-        return Section::find($sectionId)->teamMembers;
-    }
+    
 
     public function getAllTeamMembers()
     {
@@ -53,11 +45,7 @@ class TeamRepository{
     {
         return Team::find($id)->update([
             'full_name' => $member['full_name'],
-            'position' => $member['position'],
-            'facebook_link' => $member['facebook_link'],
-            'twitter_handler' => $member['twitter_handler'],
-            'linked_in' => $member['linked_in'],
-            'google_plus' => $member['google_plus'],
+            'position' => $member['position']
         ]);
     }
 
