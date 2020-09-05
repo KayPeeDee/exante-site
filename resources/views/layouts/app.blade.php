@@ -17,6 +17,7 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
+    <link href="{{asset('images/TekkieTonicFavIcon2.png')}}" rel="icon">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
